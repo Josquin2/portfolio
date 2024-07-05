@@ -3,3 +3,7 @@
 body {
   overflow-x: hidden;
 }
+
+.closed {
+  display: none !important;
+}

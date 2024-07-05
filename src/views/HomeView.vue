@@ -1,6 +1,43 @@
 <script setup lang="ts">
 import ExpLogos from '@/components/ExpLogos.vue'
 import OneProject from '@/components/OneProject.vue'
+import CWModal from '@/components/modals/CWModal.vue'
+import { onCWButtonClick } from '@/functions.ts'
+
+const text = {
+  hello: {
+    en: 'Hi there, I’m Zac!',
+    ru: 'Привет, Я Захар!'
+  },
+  about_me: {
+    en: 'I am a front-end software engineer, specializing in website development using various frameworks.',
+    ru: 'Я front-end разработчик, специализирующийся на разработке веб-сайтов с использованием различных фреймворков.'
+  },
+  buttons: {
+    get_in_touch: {
+      en: 'Get In Touch',
+      ru: 'Связаться'
+    },
+    cw: {
+      en: 'Download CW',
+      ru: 'Резюме'
+    }
+  },
+  exp_logos: {
+    en: 'EXPERIENCE WITH',
+    ru: 'ОПЫТ С'
+  },
+  projects: {
+    title: {
+      en: 'PROJECTS',
+      ru: 'ПРОЕКТЫ'
+    }
+  },
+  work_experience: {
+    en: 'As part of my job, I was involved in the development of web applications using the Vue framework. My responsibilities included transforming Figma layouts into functional web pages. Special attention was paid to responsive design, thanks to which the sites I created were correctly displayed on both computers and mobile devices.',
+    ru: 'В рамках своей работы я занимался разработкой веб-приложений, используя фреймворк Vue. Мои обязанности включали в себя преобразование макетов Figma в функциональные веб-страницы. Особое внимание уделялось адаптивной верстке, благодаря чему созданные мной сайты корректно отображались как на компьютерах, так и на мобильных устройствах.'
+  }
+}
 </script>
 
 <template>
@@ -9,14 +46,14 @@ import OneProject from '@/components/OneProject.vue'
       <span class="photo-background"><img src="/i-am.png" alt="" /></span>
     </div>
     <div class="few-words">
-      <h1>Hi there!, I’m Zac!</h1>
+      <h1>Hi there, I’m Zac!</h1>
       <p>
         I am a front-end software engineer, specializing in website development using various
         frameworks.
       </p>
       <div class="buttons">
         <button class="get-in-touch">Get In Touch</button>
-        <button class="cw">Download CW</button>
+        <button class="cw" @click="onCWButtonClick">Download CW</button>
       </div>
     </div>
 
@@ -48,6 +85,8 @@ import OneProject from '@/components/OneProject.vue'
         </div>
       </div>
     </div>
+    <!-- modals goes there -->
+    <CWModal />
   </div>
 </template>
 
@@ -145,6 +184,7 @@ import OneProject from '@/components/OneProject.vue'
     margin: 81px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     h2 {
       font-size: 35px;
       font-weight: 900;
