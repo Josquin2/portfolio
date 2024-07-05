@@ -2,7 +2,7 @@
 import ExpLogos from '@/components/ExpLogos.vue'
 import OneProject from '@/components/OneProject.vue'
 import CWModal from '@/components/modals/CWModal.vue'
-import { onCWButtonClick } from '@/functions.ts'
+import { onCWButtonClick } from '@/functions'
 
 const text = {
   hello: {

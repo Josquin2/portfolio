@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { onCWButtonClick } from '@/functions.ts'
+import { onCWButtonClick } from '@/functions'
 
 function onEnglishCWClick() {
-  window.location.href = '/resume/resume-en.pdf'
+  window.open('resume/resume-en.pdf', '_blank')
 }
 
 function onRussianCWClick() {
-  window.location.href = '/resume/resume-ru.pdf'
+  window.open('resume/resume-ru.pdf', '_blank')
 }
 </script>
 
