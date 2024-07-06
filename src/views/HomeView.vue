@@ -2,7 +2,8 @@
 import ExpLogos from '@/components/ExpLogos.vue'
 import OneProject from '@/components/OneProject.vue'
 import CWModal from '@/components/modals/CWModal.vue'
-import { onCWButtonClick } from '@/functions'
+import ContactModal from '@/components/modals/ContactModal.vue'
+import { onCWButtonClick, onContactButtonClick } from '@/functions'
 
 const text = {
   hello: {
@@ -52,7 +53,7 @@ const text = {
         frameworks.
       </p>
       <div class="buttons">
-        <button class="get-in-touch">Get In Touch</button>
+        <button class="get-in-touch" @click="onContactButtonClick">Get In Touch</button>
         <button class="cw" @click="onCWButtonClick">Download CW</button>
       </div>
     </div>
@@ -87,6 +88,7 @@ const text = {
     </div>
     <!-- modals goes there -->
     <CWModal />
+    <ContactModal />
   </div>
 </template>
 

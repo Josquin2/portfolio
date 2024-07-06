@@ -7,3 +7,9 @@ body {
 .closed {
   display: none !important;
 }
+
+button,
+input,
+textarea:focus {
+  outline-width: none;
+}

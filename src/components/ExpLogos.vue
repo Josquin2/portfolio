@@ -3,7 +3,7 @@
     <h3>EXPERIENCE WITH</h3>
     <div class="logos">
       <img src="/javascript.png" alt="" />
-      <img src="/nodejs.png" alt="" />
+      <!-- <img src="/nodejs.png" alt="" /> -->
       <img src="/vue.png" alt="" />
       <img src="/html.png" alt="" />
       <img src="/css.png" alt="" />

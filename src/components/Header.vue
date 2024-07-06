@@ -38,4 +38,9 @@
     }
   }
 }
+@media only screen and (max-width: 1000px) {
+  .header {
+    padding: 0 10vw;
+  }
+}
 </style>

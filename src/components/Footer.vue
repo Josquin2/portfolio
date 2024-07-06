@@ -77,4 +77,10 @@
     align-self: center;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .footer {
+    padding: 72px 10vw;
+  }
+}
 </style>

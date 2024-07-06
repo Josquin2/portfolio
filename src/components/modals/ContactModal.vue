@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { onCWButtonClick } from '@/functions'
+import { onContactButtonClick } from '@/functions'
 
-function onEnglishCWClick() {
-  window.open('resume/resume-en.pdf', '_blank')
+function onTelegramClick() {
+  window.open('https://t.me/Josquin2')
 }
 
-function onRussianCWClick() {
-  window.open('resume/resume-ru.pdf', '_blank')
+function onEmailClick() {
+  window.open('mailto:Josquinwork@mail.ru')
 }
 </script>
 
 <template>
-  <div class="CW-modal closed" id="cw-modal">
+  <div class="CW-modal closed" id="contact-modal">
     <div class="modal-common">
-      <div class="close-button" @click="onCWButtonClick">
+      <div class="close-button" @click="onContactButtonClick">
         <img src="/resume/close.png" alt="" />
       </div>
       <div class="text">
-        <h4>Choose language</h4>
+        <h4>Contact with me!</h4>
       </div>
       <div class="languages">
-        <button @click="onEnglishCWClick">English</button>
-        <button @click="onRussianCWClick">Russian</button>
+        <button @click="onTelegramClick">Telegram</button>
+        <button @click="onEmailClick">Email</button>
       </div>
     </div>
   </div>
