@@ -54,7 +54,7 @@ watch(
 <style>
 .footer {
   height: 420px;
-  width: 100vw;
+  width: 100%;
   background-color: #1d1d1d;
   padding: 72px 21.8vw;
   display: flex;
@@ -109,6 +109,12 @@ watch(
 @media only screen and (max-width: 1000px) {
   .footer {
     padding: 72px 10vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .footer {
+    zoom: 0.7;
   }
 }
 </style>

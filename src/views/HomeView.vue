@@ -219,6 +219,8 @@ function setNewLang(language: string) {
     }
     .all-companies {
       margin-top: 48px;
+      display: flex;
+      flex-direction: column;
 
       .one-company {
         width: 810px;
@@ -240,6 +242,38 @@ function setNewLang(language: string) {
 
         .text {
           margin-top: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .home-view {
+    zoom: 0.6;
+
+    .projects {
+      .two-projects {
+        flex-direction: column;
+        gap: 42px;
+      }
+    }
+
+    .experience-company {
+      .all-companies {
+        .one-company {
+          width: 492px;
+
+          .comp-header {
+            display: flex;
+
+            h4 {
+              width: 300px;
+            }
+          }
+          .text {
+            margin-top: 32px;
+          }
         }
       }
     }

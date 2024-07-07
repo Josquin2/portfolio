@@ -13,3 +13,7 @@ input,
 textarea:focus {
   outline-width: none;
 }
+
+html {
+  overflow-x: hidden;
+}

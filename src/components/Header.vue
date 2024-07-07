@@ -34,6 +34,10 @@ watch(
     currentText.value = text[newLang]
   }
 )
+
+function onBurgerClick() {
+  document.getElementById('burger')?.classList.toggle('closed')
+}
 </script>
 
 <template>
@@ -48,6 +52,14 @@ watch(
       <div class="icon" @click="onLangClick">
         <img src="/uk.png" alt="" v-if="route.params.lang == 'en'" />
         <img src="/ru.png" alt="" v-else />
+      </div>
+      <div class="burger-menu">
+        <img src="/burger.png" alt="" @click="onBurgerClick" />
+        <div class="extended" id="burger">
+          <p class="p">{{ currentText.proj }}</p>
+          <p class="p">{{ currentText.exp }}</p>
+          <p class="p">{{ currentText.cont }}</p>
+        </div>
       </div>
     </div>
   </header>
@@ -78,6 +90,9 @@ watch(
     p:hover {
       border-bottom: 1px solid #ffffff;
     }
+    .burger-menu {
+      display: none;
+    }
 
     .icon {
       cursor: pointer;
@@ -90,6 +105,44 @@ watch(
 @media only screen and (max-width: 1000px) {
   .header {
     padding: 0 10vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .header {
+    .header-links {
+      p {
+        display: none;
+      }
+      .burger-menu {
+        display: flex;
+
+        .extended {
+          position: absolute;
+          z-index: 10;
+          left: 0;
+          top: 0;
+          margin-top: 100px;
+          width: 100vw;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 1px solid #333333;
+
+          background-color: #222222;
+          .p {
+            border-bottom: 1px solid #333333;
+            display: flex;
+            align-items: center;
+            height: 9vh;
+            font-size: 28px;
+            text-align: center;
+            margin: 0;
+          }
+        }
+      }
+    }
   }
 }
 </style>

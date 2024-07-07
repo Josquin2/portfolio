@@ -17,7 +17,7 @@ function onEmailClick() {
 </script>
 
 <template>
-  <div class="CW-modal closed" id="contact-modal">
+  <div class="contact-modal closed" id="contact-modal">
     <div class="modal-common">
       <div class="close-button" @click="onContactButtonClick">
         <img src="/resume/close.png" alt="" />
@@ -34,15 +34,15 @@ function onEmailClick() {
 </template>
 
 <style lang="scss">
-.CW-modal {
+.contact-modal {
   position: fixed;
   left: 0;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #111111a6;
 
   .modal-common {
