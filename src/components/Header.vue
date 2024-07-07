@@ -55,7 +55,7 @@ function onBurgerClick() {
       </div>
       <div class="burger-menu">
         <img src="/burger.png" alt="" @click="onBurgerClick" />
-        <div class="extended" id="burger">
+        <div class="extended closed" id="burger">
           <p class="p">{{ currentText.proj }}</p>
           <p class="p">{{ currentText.exp }}</p>
           <p class="p">{{ currentText.cont }}</p>

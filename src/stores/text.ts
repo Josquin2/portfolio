@@ -1,8 +1,11 @@
 import { defineStore } from 'pinia'
+import type { Text } from '@/components/types/text'
+
+type Language = 'en' | 'ru'
 
 export const useLangStore = defineStore({
   id: 'localization',
-  state: () => ({
+  state: (): { currentLanguage: Language; text: Record<Language, Text> } => ({
     currentLanguage: 'en',
     text: {
       en: {
@@ -84,7 +87,7 @@ export const useLangStore = defineStore({
     }
   },
   actions: {
-    setLanguage(language: string) {
+    setLanguage(language: Language) {
       this.currentLanguage = language
     }
   }
