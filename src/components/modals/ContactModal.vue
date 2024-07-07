@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  text: Object
+})
+
 import { onContactButtonClick } from '@/functions'
 
 function onTelegramClick() {
@@ -17,11 +23,11 @@ function onEmailClick() {
         <img src="/resume/close.png" alt="" />
       </div>
       <div class="text">
-        <h4>Contact with me!</h4>
+        <h4>{{ props.text?.title }}</h4>
       </div>
       <div class="languages">
-        <button @click="onTelegramClick">Telegram</button>
-        <button @click="onEmailClick">Email</button>
+        <button @click="onTelegramClick">{{ props.text?.tg }}</button>
+        <button @click="onEmailClick">{{ props.text?.email }}</button>
       </div>
     </div>
   </div>

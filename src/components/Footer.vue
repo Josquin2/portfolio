@@ -1,6 +1,34 @@
+<script setup lang="ts">
+import { ref, onMounted, watch } from 'vue'
+import { useLangStore } from '@/stores/text'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const text = {
+  en: {
+    title: 'Contacts',
+    name: 'Zakhar Startsev | 2024'
+  },
+  ru: {
+    title: 'Контакты',
+    name: 'Захар Старцев | 2024'
+  }
+}
+
+const currentText = ref(text.ru)
+
+watch(
+  () => route.params.lang,
+  (newLang) => {
+    currentText.value = text[newLang]
+  }
+)
+</script>
+
 <template>
   <footer class="footer">
-    <h2>Contact</h2>
+    <h2>{{ currentText.title }}</h2>
 
     <div class="all-icons">
       <div class="icon">
@@ -19,7 +47,7 @@
 
     <hr />
 
-    <p>Zakhar Startsev | 2024</p>
+    <p>{{ currentText.name }}</p>
   </footer>
 </template>
 

@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  text: Object
+})
+
 import { onCWButtonClick } from '@/functions'
 
 function onEnglishCWClick() {
@@ -17,11 +23,11 @@ function onRussianCWClick() {
         <img src="/resume/close.png" alt="" />
       </div>
       <div class="text">
-        <h4>Choose language</h4>
+        <h4>{{ props.text?.title }}</h4>
       </div>
       <div class="languages">
-        <button @click="onEnglishCWClick">English</button>
-        <button @click="onRussianCWClick">Russian</button>
+        <button @click="onEnglishCWClick">{{ props.text?.en }}</button>
+        <button @click="onRussianCWClick">{{ props.text?.ru }}</button>
       </div>
     </div>
   </div>

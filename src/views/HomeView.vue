@@ -1,43 +1,67 @@
 <script setup lang="ts">
+//  hello: {
+//       en: 'Hi there, I’m Zac!',
+//       ru: 'Привет, Я Захар!'
+//     },
+//     about_me: {
+//       en: 'I am a front-end software engineer, specializing in website development using various frameworks.',
+//       ru: 'Я front-end разработчик, специализирующийся на разработке веб-сайтов с использованием различных фреймворков.'
+//     },
+//     buttons: {
+//       get_in_touch: {
+//         en: 'Get In Touch',
+//         ru: 'Связаться'
+//       },
+//       cw: {
+//         en: 'Download CW',
+//         ru: 'Резюме'
+//       }
+//     },
+//     exp_logos: {
+//       en: 'EXPERIENCE WITH',
+//       ru: 'ОПЫТ С'
+//     },
+//     projects: {
+//       title: {
+//         en: 'PROJECTS',
+//         ru: 'ПРОЕКТЫ'
+//       }
+//     },
+//     work_experience: {
+//       en: 'As part of my job, I was involved in the development of web applications using the Vue framework. My responsibilities included transforming Figma layouts into functional web pages. Special attention was paid to responsive design, thanks to which the sites I created were correctly displayed on both computers and mobile devices.',
+//       ru: 'В рамках своей работы я занимался разработкой веб-приложений, используя фреймворк Vue. Мои обязанности включали в себя преобразование макетов Figma в функциональные веб-страницы. Особое внимание уделялось адаптивной верстке, благодаря чему созданные мной сайты корректно отображались как на компьютерах, так и на мобильных устройствах.'
+//     })
+import { ref, onMounted, watch } from 'vue'
 import ExpLogos from '@/components/ExpLogos.vue'
 import OneProject from '@/components/OneProject.vue'
 import CWModal from '@/components/modals/CWModal.vue'
 import ContactModal from '@/components/modals/ContactModal.vue'
 import { onCWButtonClick, onContactButtonClick } from '@/functions'
+import { useLangStore } from '@/stores/text'
+import { useRoute } from 'vue-router'
 
-const text = {
-  hello: {
-    en: 'Hi there, I’m Zac!',
-    ru: 'Привет, Я Захар!'
-  },
-  about_me: {
-    en: 'I am a front-end software engineer, specializing in website development using various frameworks.',
-    ru: 'Я front-end разработчик, специализирующийся на разработке веб-сайтов с использованием различных фреймворков.'
-  },
-  buttons: {
-    get_in_touch: {
-      en: 'Get In Touch',
-      ru: 'Связаться'
-    },
-    cw: {
-      en: 'Download CW',
-      ru: 'Резюме'
-    }
-  },
-  exp_logos: {
-    en: 'EXPERIENCE WITH',
-    ru: 'ОПЫТ С'
-  },
-  projects: {
-    title: {
-      en: 'PROJECTS',
-      ru: 'ПРОЕКТЫ'
-    }
-  },
-  work_experience: {
-    en: 'As part of my job, I was involved in the development of web applications using the Vue framework. My responsibilities included transforming Figma layouts into functional web pages. Special attention was paid to responsive design, thanks to which the sites I created were correctly displayed on both computers and mobile devices.',
-    ru: 'В рамках своей работы я занимался разработкой веб-приложений, используя фреймворк Vue. Мои обязанности включали в себя преобразование макетов Figma в функциональные веб-страницы. Особое внимание уделялось адаптивной верстке, благодаря чему созданные мной сайты корректно отображались как на компьютерах, так и на мобильных устройствах.'
+const route = useRoute()
+
+const lang = useLangStore()
+
+let currlang = lang.currLang
+let text = ref(lang.getText)
+let setLanguage = lang.setLanguage
+
+onMounted(() => {
+  setNewLang(route.params.lang)
+})
+
+watch(
+  () => route.params.lang,
+  (newLang) => {
+    setNewLang(newLang)
   }
+)
+
+function setNewLang(language: string) {
+  setLanguage(language)
+  text.value = lang.getText
 }
 </script>
 
@@ -47,48 +71,46 @@ const text = {
       <span class="photo-background"><img src="/i-am.png" alt="" /></span>
     </div>
     <div class="few-words">
-      <h1>Hi there, I’m Zac!</h1>
+      <h1>{{ text.hello }}</h1>
       <p>
-        I am a front-end software engineer, specializing in website development using various
-        frameworks.
+        {{ text.about_me }}
       </p>
       <div class="buttons">
-        <button class="get-in-touch" @click="onContactButtonClick">Get In Touch</button>
-        <button class="cw" @click="onCWButtonClick">Download CW</button>
+        <button class="get-in-touch" @click="onContactButtonClick">
+          {{ text.buttons.get_in_touch }}
+        </button>
+        <button class="cw" @click="onCWButtonClick">{{ text.buttons.cw }}</button>
       </div>
     </div>
 
-    <ExpLogos />
+    <ExpLogos :title="text.exp_logos" />
 
     <div class="projects">
-      <h2>PROJECTS</h2>
+      <h2>{{ text.projects.title }}</h2>
       <div class="two-projects">
         <OneProject />
         <OneProject />
       </div>
     </div>
     <div class="experience-company">
-      <h2>EXPERIENCE</h2>
+      <h2>{{ text.work_experience.title }}</h2>
       <div class="all-companies">
         <div class="one-company">
           <div class="comp-header">
-            <h4>Junior Front-End Software Engineer</h4>
-            <p>Apr 2024 - Present</p>
+            <h4>{{ text.work_experience.first_job.name }}</h4>
+            <p>{{ text.work_experience.first_job.date }}</p>
           </div>
           <div class="text">
             <p>
-              As part of my job, I was involved in the development of web applications using the Vue
-              framework. My responsibilities included transforming Figma layouts into functional web
-              pages. Special attention was paid to responsive design, thanks to which the sites I
-              created were correctly displayed on both computers and mobile devices.
+              {{ text.work_experience.first_job.text }}
             </p>
           </div>
         </div>
       </div>
     </div>
     <!-- modals goes there -->
-    <CWModal />
-    <ContactModal />
+    <CWModal :text="text.modals.cw" />
+    <ContactModal :text="text.modals.contact" />
   </div>
 </template>
 

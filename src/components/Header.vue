@@ -1,13 +1,54 @@
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import router from '@/router'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+function onLangClick() {
+  if (route.params.lang == 'ru') {
+    router.push({ name: 'main-page', params: { lang: 'en' } })
+  } else {
+    router.push({ name: 'main-page', params: { lang: 'ru' } })
+  }
+}
+
+const text = {
+  en: {
+    proj: 'Projects',
+    exp: 'Experience',
+    cont: 'Contacts'
+  },
+  ru: {
+    proj: 'Проекты',
+    exp: 'Опыт',
+    cont: 'Контакты'
+  }
+}
+
+const currentText = ref(text.ru)
+
+watch(
+  () => route.params.lang,
+  (newLang) => {
+    currentText.value = text[newLang]
+  }
+)
+</script>
+
 <template>
   <header class="header">
     <div class="name-logo">
       <h1>Zac</h1>
     </div>
     <div class="header-links">
-      <p>Home</p>
-      <p>Projects</p>
-      <p>Experience</p>
-      <p>Contact</p>
+      <p>{{ currentText.proj }}</p>
+      <p>{{ currentText.exp }}</p>
+      <p>{{ currentText.cont }}</p>
+      <div class="icon" @click="onLangClick">
+        <img src="/uk.png" alt="" v-if="route.params.lang == 'en'" />
+        <img src="/ru.png" alt="" v-else />
+      </div>
     </div>
   </header>
 </template>
@@ -25,6 +66,7 @@
   .header-links {
     color: #ffffff;
     display: flex;
+    align-items: center;
     gap: 71px;
 
     p {
@@ -35,6 +77,13 @@
 
     p:hover {
       border-bottom: 1px solid #ffffff;
+    }
+
+    .icon {
+      cursor: pointer;
+      display: flex;
+      width: 32px;
+      height: 32px;
     }
   }
 }
