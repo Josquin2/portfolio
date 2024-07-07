@@ -88,8 +88,8 @@ function setNewLang(language: string) {
     <div class="projects">
       <h2>{{ text.projects.title }}</h2>
       <div class="two-projects">
-        <OneProject />
-        <OneProject />
+        <OneProject :text="text.projects.first" />
+        <OneProject :text="text.projects.second" />
       </div>
     </div>
     <div class="experience-company">

@@ -18,7 +18,17 @@ export const useLangStore = defineStore({
         },
         exp_logos: 'EXPERIENCE WITH',
         projects: {
-          title: 'PROJECTS'
+          title: 'PROJECTS',
+          first: {
+            title: 'SkyTec Alliance',
+            image: 'proj-1.png',
+            click: 'CLICK HERE TO VISIT'
+          },
+          second: {
+            title: 'Car Rental',
+            image: 'proj-2.png',
+            click: 'CLICK HERE TO VISIT'
+          }
         },
         work_experience: {
           title: '',
@@ -52,8 +62,19 @@ export const useLangStore = defineStore({
         },
         exp_logos: 'ОПЫТ РАБОТЫ С',
         projects: {
-          title: 'ПРОЕКТЫ'
+          title: 'PROJECTS',
+          first: {
+            title: 'SkyTec Alliance',
+            image: 'proj-1.png',
+            click: 'НАЖМИТЕ ЗДЕСЬ, ЧТОБЫ ПОСЕТИТЬ'
+          },
+          second: {
+            title: 'Car Rental',
+            image: 'proj-2.png',
+            click: 'НАЖМИТЕ ЗДЕСЬ, ЧТОБЫ ПОСЕТИТЬ'
+          }
         },
+
         work_experience: {
           title: 'ОПЫТ',
           first_job: {

@@ -1,10 +1,18 @@
+<script setup lang="ts">
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  text: Object
+})
+</script>
+
 <template>
   <div class="one-project">
-    <img src="" alt="" />
+    <img :src="props.text?.image" alt="" />
     <div class="p-footer">
       <div class="lp-f">
-        <p>CLICK HERE TO VISIT</p>
-        <h3>NAME OF THE PROJECT</h3>
+        <p>{{ props.text?.click }}</p>
+        <h3>{{ props.text?.title }}</h3>
       </div>
       <div class="rp-f">
         <img src="/arrow.png" alt="" />

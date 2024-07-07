@@ -8,6 +8,8 @@ export interface Text {
   exp_logos: string
   projects: {
     title: string
+    first: OneProject
+    second: OneProject
   }
   work_experience: {
     title: string
@@ -33,4 +35,10 @@ export interface Text {
 
 export interface Language {
   currentLanguage: string
+}
+
+interface OneProject {
+  title: string
+  image: string
+  click: string
 }
