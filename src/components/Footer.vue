@@ -27,7 +27,7 @@ watch(
 </script>
 
 <template>
-  <footer class="footer">
+  <footer class="footer" id="contacts">
     <h2>{{ currentText.title }}</h2>
 
     <div class="all-icons">

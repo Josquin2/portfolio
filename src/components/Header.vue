@@ -38,17 +38,41 @@ watch(
 function onBurgerClick() {
   document.getElementById('burger')?.classList.toggle('closed')
 }
+
+function onProjectsClick() {
+  const element = document.getElementById('projects')
+  element?.scrollIntoView({ behavior: 'smooth' })
+  closeBurger()
+}
+
+function onExperienceClick() {
+  const element = document.getElementById('experience')
+  element?.scrollIntoView({ behavior: 'smooth' })
+  closeBurger()
+}
+
+function onContactsClick() {
+  const element = document.getElementById('contacts')
+  element?.scrollIntoView({ behavior: 'smooth' })
+  closeBurger()
+}
+
+function closeBurger() {
+  if (!document.getElementById('burger')?.classList.contains('closed')) {
+    onBurgerClick()
+  }
+}
 </script>
 
 <template>
   <header class="header">
     <div class="name-logo">
-      <h1>Zac</h1>
+      <img src="/logo-zac-main.png" alt="" />
     </div>
     <div class="header-links">
-      <p>{{ currentText.proj }}</p>
-      <p>{{ currentText.exp }}</p>
-      <p>{{ currentText.cont }}</p>
+      <p @click="onProjectsClick">{{ currentText.proj }}</p>
+      <p @click="onExperienceClick">{{ currentText.exp }}</p>
+      <p @click="onContactsClick">{{ currentText.cont }}</p>
       <div class="icon" @click="onLangClick">
         <img src="/uk.png" alt="" v-if="route.params.lang == 'en'" />
         <img src="/ru.png" alt="" v-else />
@@ -56,9 +80,9 @@ function onBurgerClick() {
       <div class="burger-menu">
         <img src="/burger.png" alt="" @click="onBurgerClick" />
         <div class="extended closed" id="burger">
-          <p class="p">{{ currentText.proj }}</p>
-          <p class="p">{{ currentText.exp }}</p>
-          <p class="p">{{ currentText.cont }}</p>
+          <p class="p" @click="onProjectsClick">{{ currentText.proj }}</p>
+          <p class="p" @click="onExperienceClick">{{ currentText.exp }}</p>
+          <p class="p" @click="onContactsClick">{{ currentText.cont }}</p>
         </div>
       </div>
     </div>

@@ -85,14 +85,14 @@ function setNewLang(language: string) {
 
     <ExpLogos :title="text.exp_logos" />
 
-    <div class="projects">
+    <div class="projects" id="projects">
       <h2>{{ text.projects.title }}</h2>
       <div class="two-projects">
         <OneProject :text="text.projects.first" />
         <OneProject :text="text.projects.second" />
       </div>
     </div>
-    <div class="experience-company">
+    <div class="experience-company" id="experience">
       <h2>{{ text.work_experience.title }}</h2>
       <div class="all-companies">
         <div class="one-company">
