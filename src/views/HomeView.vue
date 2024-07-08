@@ -1,36 +1,4 @@
 <script setup lang="ts">
-//  hello: {
-//       en: 'Hi there, I’m Zac!',
-//       ru: 'Привет, Я Захар!'
-//     },
-//     about_me: {
-//       en: 'I am a front-end software engineer, specializing in website development using various frameworks.',
-//       ru: 'Я front-end разработчик, специализирующийся на разработке веб-сайтов с использованием различных фреймворков.'
-//     },
-//     buttons: {
-//       get_in_touch: {
-//         en: 'Get In Touch',
-//         ru: 'Связаться'
-//       },
-//       cw: {
-//         en: 'Download CW',
-//         ru: 'Резюме'
-//       }
-//     },
-//     exp_logos: {
-//       en: 'EXPERIENCE WITH',
-//       ru: 'ОПЫТ С'
-//     },
-//     projects: {
-//       title: {
-//         en: 'PROJECTS',
-//         ru: 'ПРОЕКТЫ'
-//       }
-//     },
-//     work_experience: {
-//       en: 'As part of my job, I was involved in the development of web applications using the Vue framework. My responsibilities included transforming Figma layouts into functional web pages. Special attention was paid to responsive design, thanks to which the sites I created were correctly displayed on both computers and mobile devices.',
-//       ru: 'В рамках своей работы я занимался разработкой веб-приложений, используя фреймворк Vue. Мои обязанности включали в себя преобразование макетов Figma в функциональные веб-страницы. Особое внимание уделялось адаптивной верстке, благодаря чему созданные мной сайты корректно отображались как на компьютерах, так и на мобильных устройствах.'
-//     })
 import { ref, onMounted, watch } from 'vue'
 import ExpLogos from '@/components/ExpLogos.vue'
 import OneProject from '@/components/OneProject.vue'
@@ -63,6 +31,13 @@ function setNewLang(language: string) {
   setLanguage(language)
   text.value = lang.getText
 }
+
+function onFirstProjectClick() {
+  window.open('https://github.com/Josquin2/skytec-lc')
+}
+function onSecondProjectClick() {
+  window.open('https://github.com/Josquin2/car-rental')
+}
 </script>
 
 <template>
@@ -88,8 +63,8 @@ function setNewLang(language: string) {
     <div class="projects" id="projects">
       <h2>{{ text.projects.title }}</h2>
       <div class="two-projects">
-        <OneProject :text="text.projects.first" />
-        <OneProject :text="text.projects.second" />
+        <OneProject :text="text.projects.first" @click="onFirstProjectClick()" />
+        <OneProject :text="text.projects.second" @click="onSecondProjectClick()" />
       </div>
     </div>
     <div class="experience-company" id="experience">
@@ -248,7 +223,18 @@ function setNewLang(language: string) {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
+  .home-view {
+    zoom: 0.8;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .home-view {
+    zoom: 0.7;
+  }
+}
+
+@media only screen and (max-width: 600px) {
   .home-view {
     zoom: 0.6;
 

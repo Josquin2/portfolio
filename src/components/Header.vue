@@ -135,6 +135,7 @@ function closeBurger() {
 @media only screen and (max-width: 700px) {
   .header {
     .header-links {
+      gap: 36px;
       p {
         display: none;
       }

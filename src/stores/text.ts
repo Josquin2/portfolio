@@ -31,7 +31,7 @@ export const useLangStore = defineStore({
           }
         },
         work_experience: {
-          title: '',
+          title: 'EXPERIENCE',
           first_job: {
             name: 'Junior Front-End Software Engineer',
             date: 'Apr 2024 - Present',
