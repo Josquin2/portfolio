@@ -62,7 +62,7 @@ export const useLangStore = defineStore({
         },
         exp_logos: 'ОПЫТ РАБОТЫ С',
         projects: {
-          title: 'PROJECTS',
+          title: 'ПРОЕКТЫ',
           first: {
             title: 'SkyTec Alliance',
             image: 'proj-1.png',
